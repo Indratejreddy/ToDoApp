@@ -15,7 +15,7 @@ const title = new schema(
 
     );
 
-const task = new schema(
+const tasks = new schema(
     {
     tasks:[{ type: String,trim: true}]
     },
@@ -26,7 +26,7 @@ const task = new schema(
 
 const toDoSchema = new schema({
     toDoTitle : title,
-    toDoTasks: task
+    toDoTasks: tasks
 
     },
     {

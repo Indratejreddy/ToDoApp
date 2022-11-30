@@ -17,7 +17,16 @@ const deleteAllTasksToToDo = require("../controllers/DeleteAllTasksToToDoControl
 //dates
 const dates = require("../controllers/GetDatesController");
 const titleDates = require("../controllers/GetDatesForTitleController");
-const taskDates = require("../controllers/GetDatesForTasksController")
+const taskDates = require("../controllers/GetDatesForTasksController");
+
+//search
+
+const search = require("../controllers/SearchController")
+
+
+
+//pagination
+const page = require("../controllers/PaginationController")
 
 
 router.get("/",(req,res)=>{
@@ -42,5 +51,14 @@ router.put("/updatetasktotodo/:toDoId",updateTaskToToDo);
 router.get("/getdates/:toDoId",dates);
 router.get("/gettitledates/:toDoId",titleDates);
 router.get("/gettasksdates/:toDoId",taskDates);
+
+
+
+
+//search
+router.get("/search",search);
+
+//page
+// router.get("/page",page);
 
 module.exports = router;

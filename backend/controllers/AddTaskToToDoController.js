@@ -1,14 +1,13 @@
 //importing model
-const toDoModel = require('../models/ToDoModel');
+const toDoModel = require("../models/ToDoModel");
 
 //creating controller function
-const addTaskToToDoController = async (req,res)=>{
-    try{
+const addTaskToToDoController = async (req, res) => {
+  try {
+    const { toDoId } = req.params;
+    const { task } = req.body;
 
-    const {toDoId} = req.params;
-    const {task} = req.body;
-
-    if(!task) throw new error("task is not provided to add it to todo")
+    if (!task) throw new error("task is not provided to add it to todo");
 
     //adding a task to tasks array for our todo
     const toDoObject = await toDoModel.findOne({ _id: toDoId });
@@ -18,20 +17,17 @@ const addTaskToToDoController = async (req,res)=>{
     await toDoObject.save();
 
     res.status(200).json({
-        success: true,
-        message: task +" task is added successfully",
-        toDoObject
+      success: true,
+      message: task + " task is added successfully",
+      toDoObject,
     });
-
-    }
-
-    catch(err){
-        res.status(401).json({
-            success: false,
-            message: "Unable to perform add operation",
-            error: err.message
-        })
-        console.log(err.message);
-    } 
-}
+  } catch (err) {
+    res.status(401).json({
+      success: false,
+      message: "Unable to perform add operation",
+      error: err.message,
+    });
+    console.log(err.message);
+  }
+};
 module.exports = addTaskToToDoController;

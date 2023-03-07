@@ -1,21 +1,27 @@
 import { signInwithGmail, loginInWithEmailAndPassword } from "../FireBaseAuth";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { toDoContext } from "../App";
 
 function LoginPage() {
+    const { setMyemail } = useContext(toDoContext);
   const navigate = useNavigate();
   const password = useRef(null);
   const email = useRef(null);
   function login() {
     if (
-      loginInWithEmailAndPassword(email.current.value, password.current.value)
+      loginInWithEmailAndPassword(
+        email.current.value,
+        password.current.value,
+        setMyemail
+      )
     ) {
       navigate("/home");
     }
   }
 
   function loginWithGmail() {
-    if (signInwithGmail()) {
+    if (signInwithGmail(setMyemail)) {
       navigate("/home");
     }
   }

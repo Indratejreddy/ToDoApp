@@ -1,12 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import SearchBar from "../components/SearchBar";
 import ToDoCards from "../components/ToDoCards";
 import { toDoContext } from "../App";
 import AddNewToDo from "./AddANewTodo";
+import axios from "axios";
 
 function Home() {
-  const { toDos } = useContext(toDoContext);
-
+  const { toDos, setToDos } = useContext(toDoContext);
+  const toDoUrl = "http://localhost:4000/";
+   useEffect(() => {
+     (async () => {
+       try {
+         if (localStorage.getItem("email").length>0) {
+           const res = await axios.get(
+             toDoUrl + "fetchalltodos" + "/" + localStorage.getItem("email")
+           );
+           setToDos((toDos) => res.data.toDos);
+           console.log("___INSIDE USEFFECT____");
+         }
+       } catch (err) {
+         console.error(err);
+       }
+     })();
+   }, []);
+ console.log("-------HOME ")
   return (
     <>
       <div className="flex flex-col font-Lindra">

@@ -17,24 +17,38 @@ export const toDoContext = createContext(null);
 function App() {
   const [toDos, setToDos] = useState({});
   const [query, setQuery] = useState("");
+  const [myEmail, setMyemail] = useState("");
   const toDoUrl = "http://localhost:4000/";
+  console.log("IN THE APP Todos----------------------->",toDos);
   //loading data from server to App component.
+  console.log("--------App--", myEmail);
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get(
-          toDoUrl + "fetchalltodos" + "/" + localStorage.getItem("email")
-        );
-        setToDos((toDos) => res.data.toDos);
+        if (myEmail !== "") {
+          const res = await axios.get(
+            toDoUrl + "fetchalltodos" + "/" + localStorage.getItem("email")
+          );
+          setToDos((toDos) => res.data.toDos);
+          console.log("___INSIDE USEFFECT____");
+        }
       } catch (err) {
         console.error(err);
       }
     })();
-  }, []);
+  }, [myEmail]);
   return (
     <>
       <toDoContext.Provider
-        value={{ toDoUrl, toDos, setToDos, query, setQuery }}
+        value={{
+          toDoUrl,
+          toDos,
+          setToDos,
+          query,
+          setQuery,
+          myEmail,
+          setMyemail,
+        }}
       >
         <Routes>
           <Route path="/" element={<LoginPage />} />

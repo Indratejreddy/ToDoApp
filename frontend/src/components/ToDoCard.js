@@ -18,7 +18,7 @@ function ToDoCard({ toDoTitle, toDoTasks, toDoStatus, toDoId }) {
               <p className="text-lg">
                 Status: {toDoStatus ? "Completed" : "Inprogress"}
               </p>
-              <Link to={"ToDosList" + "/" + toDoId}>
+              <Link to={"/ToDosList" + "/" + toDoId}>
                 <button
                   onClick={() => {
                     setQuery(query=>"");

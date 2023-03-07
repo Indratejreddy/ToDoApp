@@ -1,0 +1,6 @@
+*.env
+node_modules
+./tailwind.config.js
+.vscode
+FireBaseAuth.js
+../FireBaseAuth.js

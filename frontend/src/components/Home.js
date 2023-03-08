@@ -16,14 +16,12 @@ function Home() {
              toDoUrl + "fetchalltodos" + "/" + localStorage.getItem("email")
            );
            setToDos((toDos) => res.data.toDos);
-           console.log("___INSIDE USEFFECT____");
          }
        } catch (err) {
          console.error(err);
        }
      })();
    }, []);
- console.log("-------HOME ")
   return (
     <>
       <div className="flex flex-col font-Lindra">

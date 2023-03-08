@@ -4,13 +4,13 @@ import { useRef, useContext } from "react";
 import { toDoContext } from "../App";
 
 function LoginPage() {
-    const { setMyemail } = useContext(toDoContext);
+  const { setMyemail } = useContext(toDoContext);
   const navigate = useNavigate();
   const password = useRef(null);
   const email = useRef(null);
-  function login() {
+  async function login() {
     if (
-      loginInWithEmailAndPassword(
+      await loginInWithEmailAndPassword(
         email.current.value,
         password.current.value,
         setMyemail
@@ -20,8 +20,8 @@ function LoginPage() {
     }
   }
 
-  function loginWithGmail() {
-    if (signInwithGmail(setMyemail)) {
+  async function loginWithGmail() {
+    if (await signInwithGmail(setMyemail)) {
       navigate("/home");
     }
   }
@@ -99,7 +99,7 @@ bg-[#333335] hover:bg-[#181a1a] group
             <h3 className="text-2xl font-bold text-center text-[#333335] hover:text-[#181a1a]">
               Login to your account
             </h3>
-            <form action="">
+            <form action="" onSubmit={(event) => event.preventDefault()}>
               <div className="mt-4">
                 <div>
                   <label
@@ -134,7 +134,6 @@ bg-[#333335] hover:bg-[#181a1a] group
                 </div>
                 <div className="flex items-baseline justify-between flex-wrap gap-2">
                   <button
-                    type="button"
                     onClick={login}
                     className="px-6 py-2 mt-4 text-white  rounded-lg bg-[#333335] hover:bg-[#181a1a] "
                   >

@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Home from "./components/Home";
@@ -19,24 +19,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [myEmail, setMyemail] = useState("");
   const toDoUrl = "http://localhost:4000/";
-  console.log("IN THE APP Todos----------------------->",toDos);
-  //loading data from server to App component.
-  console.log("--------App--", myEmail);
-  useEffect(() => {
-    (async () => {
-      try {
-        if (myEmail !== "") {
-          const res = await axios.get(
-            toDoUrl + "fetchalltodos" + "/" + localStorage.getItem("email")
-          );
-          setToDos((toDos) => res.data.toDos);
-          console.log("___INSIDE USEFFECT____");
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    })();
-  }, [myEmail]);
+
   return (
     <>
       <toDoContext.Provider

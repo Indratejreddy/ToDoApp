@@ -7,10 +7,13 @@ function SignUpPage() {
   const confirmPassword = useRef(null);
   const email = useRef(null);
   const navigate = useNavigate();
-  function signUp() {
+  async function signUp() {
     if (password.current.value === confirmPassword.current.value) {
       if (
-        signUpWithEmailAndPassword(email.current.value, password.current.value)
+        await signUpWithEmailAndPassword(
+          email.current.value,
+          password.current.value
+        )
       ) {
         navigate("/login");
       }
@@ -31,7 +34,7 @@ bg-[#333335] hover:bg-[#181a1a] group
             <h3 className="text-2xl font-bold text-center text-[#333335] hover:text-[#181a1a]">
               Sign Up
             </h3>
-            <form action="">
+            <form action="" onSubmit={(event) => event.preventDefault()}>
               <div className="mt-4">
                 <div>
                   <label
@@ -80,13 +83,12 @@ bg-[#333335] hover:bg-[#181a1a] group
                 </div>
                 <div className="flex items-baseline justify-between flex-wrap gap-2">
                   <button
-                    type="button"
                     onClick={signUp}
                     className="px-6 py-2 mt-4 text-white  rounded-lg bg-[#333335] hover:bg-[#181a1a] "
                   >
                     Sign up
                   </button>
-                  <Link to={"/login"}>
+                  <Link to={"/"}>
                     <p className="text-sm text-[#333335] hover:text-[#181a1a] hover:underline">
                       Already a member?{" "}
                       <span className="font-semibold">Login</span>

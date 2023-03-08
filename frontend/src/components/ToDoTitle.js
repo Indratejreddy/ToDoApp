@@ -8,7 +8,7 @@ export default function ToDoTitle({
   toDoStatus,
   setToDos,
   toDoUrl,
-  toDoId
+  toDoId,
 }) {
   const [editMode, setEditMode] = useState(false);
   const titleUrl = toDoUrl + "updatetitletotodo/" + toDoId;

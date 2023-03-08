@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
+import { Link } from "react-router-dom";
 import { toDoContext } from "../App";
-
 import createAToDo from "../utils/CreateAToDo";
 
 export default function CreateANewTodo() {
@@ -54,12 +54,14 @@ export default function CreateANewTodo() {
 
             {/* create button */}
             <div className="w-full flex justify-center items-center mt-4 ">
-              <button
-                onClick={sendTextInput}
-                className="hover:text-green-600 font-semibold  bg-[#f4f4f4] rounded-xl px-6 py-2 text-center hover:border-green-600 border-2 shadow-3xl "
-              >
-                Create
-              </button>
+              <Link to={"/home"}>
+                <button
+                  onClick={sendTextInput}
+                  className="hover:text-green-600 font-semibold  bg-[#f4f4f4] rounded-xl px-6 py-2 text-center hover:border-green-600 border-2 shadow-3xl "
+                >
+                  Create
+                </button>
+              </Link>
             </div>
           </div>
         </div>

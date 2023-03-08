@@ -8,7 +8,7 @@ import fetchAllToDos from "../utils/FetchAllToDos";
 function Home() {
   const { toDos, setToDos } = useContext(toDoContext);
   useEffect(() => {
-    fetchAllToDos(setToDos)
+    fetchAllToDos(setToDos);
   }, []);
   return (
     <>

@@ -1,6 +1,5 @@
 import { useState, createContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
 import Home from "./components/Home";
 import ToDosList from "./components/ToDosList";
 import AddNewToDo from "./components/AddANewTodo";

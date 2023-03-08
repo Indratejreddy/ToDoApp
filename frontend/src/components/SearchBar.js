@@ -4,7 +4,7 @@ function SearchBar() {
    const { setQuery } = useContext(toDoContext);
   return (
     <>
-      <div className="py-2 sticky top-0  mt-12 flex group md:ml-[45%] ml-[35%]  hover:ml-0 focus-within:ml-0 duration-1000 ">
+      <div className="py-2 sticky top-0  mt-4 flex group md:ml-[45%] ml-[35%]  hover:ml-0 focus-within:ml-0 duration-1000 ">
         {/*logo */}
         <div>
           <svg

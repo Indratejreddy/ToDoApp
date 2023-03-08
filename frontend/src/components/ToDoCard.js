@@ -18,10 +18,10 @@ function ToDoCard({ toDoTitle, toDoTasks, toDoStatus, toDoId }) {
               <p className="text-lg">
                 Status: {toDoStatus ? "Completed" : "Inprogress"}
               </p>
-              <Link to={"/ToDosList" + "/" + toDoId}>
+              <Link to={"/ToDosList/" + toDoId}>
                 <button
                   onClick={() => {
-                    setQuery(query=>"");
+                    setQuery((query) => "");
                   }}
                   className="text-center flex gap-1 items-center justify-center mt-2 rounded-3xl bg-[#f4f4f4] p-2 text-sm text-[#333335] hover:bg-[#181a1a] hover:text-[#f4f4f4] border-[2px] hover:border-[#f4f4f4]"
                 >

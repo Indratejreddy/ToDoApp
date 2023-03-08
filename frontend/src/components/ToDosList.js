@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import ToDoTitle from "./ToDoTitle";
 import ToDoTask from "./ToDoTask";
 import addATask from "../utils/AddATask";
-import checkAndUpdateTodoStatus from "../utils/CheckAndUpdateTodoStatus"
+import checkAndUpdateTodoStatus from "../utils/CheckAndUpdateTodoStatus";
 
 function ToDosList() {
   const { toDoId } = useParams();
@@ -12,8 +12,7 @@ function ToDosList() {
   const addTaskRef = useRef(null);
   const toDoStatusUrl = toDoUrl + "updatetodostatus/" + toDoId;
   const toDo = toDos.length > 0 && toDos.find((toDo) => toDo._id === toDoId);
-  checkAndUpdateTodoStatus(toDo,toDoStatusUrl,setToDos);
-
+  checkAndUpdateTodoStatus(toDo, toDoStatusUrl, setToDos);
 
   return (
     <>
